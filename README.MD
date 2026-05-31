@@ -86,3 +86,185 @@ El paquete contiene los siguientes procedimientos:
 ![Tabla PRODUCTO](docs/img/oracle/tabla.png)
 
 
+# Reto Técnico - Parte 2: Java 8
+
+API REST construida con Java 8, Spring Boot 2.7.17, Spring Web, Spring Data JPA, Bean Validation, Lombok y Oracle Database.
+
+## Requisitos
+
+- Java 8 o superior para compilar el proyecto configurado con target Java 8.
+- Maven.
+- Oracle Database disponible en `localhost:1521/FREEPDB1`.
+- Usuario Oracle: `MIAPP`.
+- Password Oracle: `root123`.
+
+## Configuracion
+
+La aplicacion principal usa Oracle en `src/main/resources/application.yaml`:
+
+```yaml
+spring:
+  application:
+    name: reto
+  datasource:
+    url: jdbc:oracle:thin:@//localhost:1521/FREEPDB1
+    username: MIAPP
+    password: root123
+    driver-class-name: oracle.jdbc.OracleDriver
+  jpa:
+    database-platform: org.hibernate.dialect.Oracle12cDialect
+    hibernate:
+      ddl-auto: update
+```
+
+Los tests usan H2 en memoria desde `src/test/resources/application.yaml`, por lo que no dependen de Oracle para ejecutarse.
+
+## Ejecutar
+
+```bash
+mvn spring-boot:run
+```
+
+La API queda disponible en:
+
+```text
+http://localhost:8080
+```
+
+## Probar
+
+```bash
+mvn test
+```
+
+Las pruebas cubren:
+
+- Creacion de productos.
+- Validacion de codigo unico.
+- Busqueda por ID.
+- Listado paginado con filtros.
+- Actualizacion de productos.
+- Eliminacion logica.
+- Respuestas HTTP del controlador.
+- Validacion de body invalido.
+- Manejo de producto no encontrado.
+
+## Endpoints
+
+Base URL:
+
+```text
+http://localhost:8080
+```
+
+### Crear Producto
+
+```bash
+curl --location 'http://localhost:8080/api/productos' \
+--header 'Content-Type: application/json' \
+--data '{
+  "codigo": "PROD001",
+  "nombre": "Laptop Lenovo ThinkPad",
+  "marca": "Lenovo",
+  "modelo": "T14",
+  "precio": 3499.90,
+  "stock": 10
+}'
+```
+
+Respuesta esperada: `201 Created`.
+
+### Listar Productos
+
+```bash
+curl --location 'http://localhost:8080/api/productos'
+```
+
+Respuesta esperada: `200 OK`.
+
+### Listar Con Paginacion
+
+```bash
+curl --location 'http://localhost:8080/api/productos?page=0&size=10'
+```
+
+Respuesta esperada: `200 OK`.
+
+### Filtrar Por Marca
+
+```bash
+curl --location 'http://localhost:8080/api/productos?marca=Lenovo&page=0&size=10'
+```
+
+Respuesta esperada: `200 OK`.
+
+### Filtrar Por Modelo
+
+```bash
+curl --location 'http://localhost:8080/api/productos?modelo=T14&page=0&size=10'
+```
+
+Respuesta esperada: `200 OK`.
+
+### Filtrar Por Marca Y Modelo
+
+```bash
+curl --location 'http://localhost:8080/api/productos?marca=Lenovo&modelo=T14&page=0&size=10'
+```
+
+Respuesta esperada: `200 OK`.
+
+### Obtener Producto Por ID
+
+```bash
+curl --location 'http://localhost:8080/api/productos/1'
+```
+
+Respuesta esperada: `200 OK` si existe y esta activo. Si no existe: `404 Not Found`.
+
+### Actualizar Producto
+
+```bash
+curl --location --request PUT 'http://localhost:8080/api/productos/1' \
+--header 'Content-Type: application/json' \
+--data '{
+  "codigo": "PROD001",
+  "nombre": "Laptop Lenovo ThinkPad Actualizada",
+  "marca": "Lenovo",
+  "modelo": "T14 Gen 2",
+  "precio": 3899.90,
+  "stock": 15
+}'
+```
+
+Respuesta esperada: `200 OK`.
+
+### Eliminar Producto
+
+```bash
+curl --location --request DELETE 'http://localhost:8080/api/productos/1'
+```
+
+Respuesta esperada: `204 No Content`.
+
+La eliminacion es logica: el producto se marca con estado `I`.
+
+## Errores
+
+El manejador global devuelve errores con esta estructura:
+
+```json
+{
+  "timestamp": "2026-05-31T15:00:00",
+  "status": 400,
+  "error": "Bad Request",
+  "mensaje": "Detalle del error"
+}
+```
+
+Codigos principales:
+
+- `400 Bad Request`: validaciones de entrada o argumentos invalidos.
+- `404 Not Found`: producto no encontrado o inactivo.
+- `409 Conflict`: codigo duplicado en un producto activo.
+- `500 Internal Server Error`: error no controlado.
