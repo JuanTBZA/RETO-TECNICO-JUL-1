@@ -1,0 +1,29 @@
+-- ============================================================
+-- DDL: Tabla PRODUCTO + constraints + índices
+-- Base de datos: Oracle 19c+
+-- ============================================================
+
+CREATE TABLE PRODUCTO (
+    ID_PRODUCTO    NUMBER(10)        GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    CODIGO         VARCHAR2(20)      NOT NULL,
+    NOMBRE         VARCHAR2(120)     NOT NULL,
+    MARCA          VARCHAR2(60)      NOT NULL,
+    MODELO         VARCHAR2(60)      NOT NULL,
+    PRECIO         NUMBER(10,2)      NOT NULL,
+    STOCK          NUMBER(10)        NOT NULL,
+    ESTADO         CHAR(1)           DEFAULT 'A' NOT NULL,
+    FECHA_CREACION TIMESTAMP         DEFAULT SYSTIMESTAMP,
+    FECHA_MODIF    TIMESTAMP,
+    -- constraints inline
+    CONSTRAINT CHK_PRODUCTO_PRECIO CHECK (PRECIO >= 0),
+    CONSTRAINT CHK_PRODUCTO_STOCK  CHECK (STOCK  >= 0),
+    CONSTRAINT CHK_PRODUCTO_ESTADO CHECK (ESTADO IN ('A','I'))
+);
+
+-- Unique key sobre CODIGO
+ALTER TABLE PRODUCTO
+    ADD CONSTRAINT UK_PRODUCTO_CODIGO UNIQUE (CODIGO);
+
+-- Índice compuesto para filtros frecuentes marca/modelo
+CREATE INDEX IDX_PRODUCTO_MARCA_MODELO
+    ON PRODUCTO (MARCA, MODELO);
