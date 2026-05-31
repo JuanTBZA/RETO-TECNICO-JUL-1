@@ -293,7 +293,7 @@ Codigos principales:
 
 
 
-# Reto Técnico - Parte 3: Angular
+# Reto Técnico - Parte 3: Angular 17
 
 Frontend web desarrollado con Angular 17 para la gestion de productos. La aplicacion permite consultar, filtrar, crear, editar, visualizar detalle y eliminar productos consumiendo una API REST.
 
