@@ -82,7 +82,7 @@ El paquete contiene los siguientes procedimientos:
 ---
 ## Diagrama
 
-### Diagrama de la tabla PRODUCTOS
+### Diagrama de la tabla PRODUCTO
 ![Tabla PRODUCTO](docs/img/oracle/tabla.png)
 
 
