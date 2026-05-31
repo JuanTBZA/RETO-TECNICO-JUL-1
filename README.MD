@@ -137,6 +137,8 @@ http://localhost:8080
 mvn test
 ```
 
+![Tabla PRODUCTO](docs/img/java/tests.png)
+
 Las pruebas cubren:
 
 - Creacion de productos.
