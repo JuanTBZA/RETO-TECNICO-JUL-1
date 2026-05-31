@@ -1,0 +1,85 @@
+<!-- src/app/components/product-form/product-form.component.html -->
+<div class="page-wrapper form-page">
+  <mat-card class="form-card">
+<mat-card-header>
+  <mat-card-title style="margin-bottom: 24px;">
+    {{ isEditMode ? 'Editar Producto' : 'Nuevo Producto' }}
+  </mat-card-title>
+</mat-card-header>
+
+    <mat-card-content>
+      <div *ngIf="isLoading" class="loading-center">
+        <mat-spinner diameter="40"></mat-spinner>
+      </div>
+
+      <form [formGroup]="form" (ngSubmit)="guardar()" *ngIf="!isLoading">
+        <div class="form-grid">
+
+          <!-- CODIGO -->
+          <mat-form-field appearance="outline">
+            <mat-label>Código *</mat-label>
+            <input matInput formControlName="codigo" maxlength="20"
+                   placeholder="Ej: PROD-001">
+            <mat-error *ngIf="hasError('codigo','required')">El código es obligatorio</mat-error>
+            <mat-error *ngIf="hasError('codigo','maxlength')">Máximo 20 caracteres</mat-error>
+          </mat-form-field>
+
+          <!-- NOMBRE -->
+          <mat-form-field appearance="outline" class="full-width-field">
+            <mat-label>Nombre *</mat-label>
+            <input matInput formControlName="nombre" maxlength="120"
+                   placeholder="Ej: Laptop UltraBook Pro">
+            <mat-error *ngIf="hasError('nombre','required')">El nombre es obligatorio</mat-error>
+            <mat-error *ngIf="hasError('nombre','maxlength')">Máximo 120 caracteres</mat-error>
+          </mat-form-field>
+
+          <!-- MARCA -->
+          <mat-form-field appearance="outline">
+            <mat-label>Marca *</mat-label>
+            <input matInput formControlName="marca" maxlength="60"
+                   placeholder="Ej: Dell">
+            <mat-error *ngIf="hasError('marca','required')">La marca es obligatoria</mat-error>
+          </mat-form-field>
+
+          <!-- MODELO -->
+          <mat-form-field appearance="outline">
+            <mat-label>Modelo *</mat-label>
+            <input matInput formControlName="modelo" maxlength="60"
+                   placeholder="Ej: XPS 15">
+            <mat-error *ngIf="hasError('modelo','required')">El modelo es obligatorio</mat-error>
+          </mat-form-field>
+
+          <!-- PRECIO -->
+          <mat-form-field appearance="outline">
+            <mat-label>Precio (S/) *</mat-label>
+            <input matInput type="number" formControlName="precio"
+                   min="0" step="0.01" placeholder="0.00">
+            <mat-error *ngIf="hasError('precio','required')">El precio es obligatorio</mat-error>
+            <mat-error *ngIf="hasError('precio','min')">El precio no puede ser negativo</mat-error>
+          </mat-form-field>
+
+          <!-- STOCK -->
+          <mat-form-field appearance="outline">
+            <mat-label>Stock *</mat-label>
+            <input matInput type="number" formControlName="stock"
+                   min="0" step="1" placeholder="0">
+            <mat-error *ngIf="hasError('stock','required')">El stock es obligatorio</mat-error>
+            <mat-error *ngIf="hasError('stock','min')">El stock no puede ser negativo</mat-error>
+          </mat-form-field>
+
+        </div><!-- /form-grid -->
+
+        <div class="form-actions">
+          <button mat-stroked-button type="button" (click)="cancelar()">
+            Cancelar
+          </button>
+          <button mat-raised-button color="primary" type="submit"
+                  [disabled]="isSaving">
+            <mat-spinner *ngIf="isSaving" diameter="18"></mat-spinner>
+            {{ isEditMode ? 'Actualizar' : 'Crear' }}
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

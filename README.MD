@@ -290,3 +290,151 @@ Codigos principales:
 - `404 Not Found`: producto no encontrado o inactivo.
 - `409 Conflict`: codigo duplicado en un producto activo.
 - `500 Internal Server Error`: error no controlado.
+
+
+
+# Reto Técnico - Parte 3: Angular
+
+Frontend web desarrollado con Angular 17 para la gestion de productos. La aplicacion permite consultar, filtrar, crear, editar, visualizar detalle y eliminar productos consumiendo una API REST.
+
+## Caracteristicas
+
+- Listado de productos en tabla con paginacion.
+- Busqueda por marca y modelo.
+- Registro de nuevos productos.
+- Edicion de productos existentes.
+- Visualizacion del detalle de un producto mediante dialogo.
+- Eliminacion con dialogo de confirmacion.
+- Validaciones de formulario para campos obligatorios, longitudes maximas y valores numericos no negativos.
+- Notificaciones de resultado mediante `MatSnackBar`.
+
+## Stack Tecnico
+
+- Angular 17.
+- Angular CLI.
+- Angular Material.
+- TypeScript.
+- RxJS.
+- SCSS.
+
+## Estructura Principal
+
+```text
+src/app/
+  components/
+    confirm-dialog/
+    product-detail/
+    product-form/
+    product-list/
+  models/
+    producto.model.ts
+  services/
+    producto.service.ts
+  app.routes.ts
+src/environments/
+  environment.ts
+```
+
+## Funcionalidad
+
+La aplicacion expone las siguientes vistas principales:
+
+- `/productos`: listado de productos con filtros, paginacion y acciones.
+- `/productos/nuevo`: formulario para registrar un producto.
+- `/productos/editar/:id`: formulario para actualizar un producto existente.
+
+Los campos gestionados para cada producto son:
+
+- `codigo`
+- `nombre`
+- `marca`
+- `modelo`
+- `precio`
+- `stock`
+- `estado`
+- `fechaCreacion`
+- `fechaModif`
+
+## API Backend
+
+La URL base del backend se configura en `src/environments/environment.ts`:
+
+```ts
+export const environment = {
+  production: false,
+  apiUrl: 'http://localhost:8080/api'
+};
+```
+
+El servicio `ProductoService` consume el recurso `/productos` y utiliza los siguientes metodos:
+
+- `GET /productos`: lista productos con paginacion y filtros opcionales por `marca` y `modelo`.
+- `GET /productos/{id}`: obtiene un producto por identificador.
+- `POST /productos`: crea un producto.
+- `PUT /productos/{id}`: actualiza un producto.
+- `DELETE /productos/{id}`: elimina un producto.
+
+## Requisitos
+
+- Node.js compatible con Angular 17.
+- npm.
+- Backend disponible en `http://localhost:8080/api` o la URL configurada en `environment.ts`.
+
+## Instalacion
+
+Instala las dependencias del proyecto:
+
+```bash
+npm install
+```
+
+## Ejecucion en Desarrollo
+
+Inicia el servidor de desarrollo:
+
+```bash
+npm start
+```
+
+Luego abre la aplicacion en:
+
+```text
+http://localhost:4200/
+```
+
+La aplicacion se recargara automaticamente cuando se modifiquen archivos fuente.
+
+## Build
+
+Genera la version de produccion:
+
+```bash
+npm run build
+```
+
+Los artefactos se generaran en:
+
+```text
+dist/front-reto/
+```
+
+## Desarrollo
+
+Para generar elementos de Angular CLI puedes usar:
+
+```bash
+npm run ng -- generate component nombre-componente
+```
+
+Para compilar en modo observacion durante desarrollo:
+
+```bash
+npm run watch
+```
+
+## Notas
+
+- El proyecto usa componentes standalone.
+- Las rutas estan definidas en `src/app/app.routes.ts`.
+- El cliente HTTP se configura en `src/app/app.config.ts` mediante `provideHttpClient()`.
+- Los estilos globales se encuentran en `src/styles.scss`.

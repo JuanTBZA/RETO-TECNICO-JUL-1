@@ -1,0 +1,39 @@
+<!-- src/app/components/product-detail/product-detail.component.html -->
+<h2 mat-dialog-title>Detalle del Producto</h2>
+
+<mat-dialog-content>
+  <table class="detail-table">
+    <tr><td class="label">ID</td><td>{{ producto.idProducto }}</td></tr>
+    <tr><td class="label">Código</td><td>{{ producto.codigo }}</td></tr>
+    <tr><td class="label">Nombre</td><td>{{ producto.nombre }}</td></tr>
+    <tr><td class="label">Marca</td><td>{{ producto.marca }}</td></tr>
+    <tr><td class="label">Modelo</td><td>{{ producto.modelo }}</td></tr>
+    <tr><td class="label">Precio</td><td>S/ {{ producto.precio | number:'1.2-2' }}</td></tr>
+    <tr><td class="label">Stock</td><td>{{ producto.stock }}</td></tr>
+    <tr>
+      <td class="label">Estado</td>
+      <td>
+        <mat-chip-listbox>
+          <mat-chip [color]="producto.estado === 'A' ? 'primary' : 'warn'" selected>
+            {{ producto.estado === 'A' ? 'Activo' : 'Inactivo' }}
+          </mat-chip>
+        </mat-chip-listbox>
+      </td>
+    </tr>
+    <tr>
+      <td class="label">Creación</td>
+      <td>{{ producto.fechaCreacion | date:'dd/MM/yyyy HH:mm' }}</td>
+    </tr>
+    <tr *ngIf="producto.fechaModif">
+      <td class="label">Modificación</td>
+      <td>{{ producto.fechaModif | date:'dd/MM/yyyy HH:mm' }}</td>
+    </tr>
+  </table>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-stroked-button mat-dialog-close>Cerrar</button>
+  <button mat-raised-button color="accent" (click)="editar()">
+    <mat-icon>edit</mat-icon> Editar
+  </button>
+</mat-dialog-actions>
