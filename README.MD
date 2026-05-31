@@ -174,6 +174,8 @@ curl --location 'http://localhost:8080/api/productos' \
 
 Respuesta esperada: `201 Created`.
 
+![Tabla PRODUCTO](docs/img/java/response01.png)
+
 ### Listar Productos
 
 ```bash
@@ -181,6 +183,8 @@ curl --location 'http://localhost:8080/api/productos'
 ```
 
 Respuesta esperada: `200 OK`.
+
+![Tabla PRODUCTO](docs/img/java/response02.png)
 
 ### Listar Con Paginacion
 
@@ -190,6 +194,8 @@ curl --location 'http://localhost:8080/api/productos?page=0&size=10'
 
 Respuesta esperada: `200 OK`.
 
+![Tabla PRODUCTO](docs/img/java/response03.png)
+
 ### Filtrar Por Marca
 
 ```bash
@@ -197,6 +203,8 @@ curl --location 'http://localhost:8080/api/productos?marca=Lenovo&page=0&size=10
 ```
 
 Respuesta esperada: `200 OK`.
+
+![Tabla PRODUCTO](docs/img/java/response04.png)
 
 ### Filtrar Por Modelo
 
@@ -206,6 +214,8 @@ curl --location 'http://localhost:8080/api/productos?modelo=T14&page=0&size=10'
 
 Respuesta esperada: `200 OK`.
 
+![Tabla PRODUCTO](docs/img/java/response05.png)
+
 ### Filtrar Por Marca Y Modelo
 
 ```bash
@@ -214,6 +224,8 @@ curl --location 'http://localhost:8080/api/productos?marca=Lenovo&modelo=T14&pag
 
 Respuesta esperada: `200 OK`.
 
+![Tabla PRODUCTO](docs/img/java/response06.png)
+
 ### Obtener Producto Por ID
 
 ```bash
@@ -221,6 +233,8 @@ curl --location 'http://localhost:8080/api/productos/1'
 ```
 
 Respuesta esperada: `200 OK` si existe y esta activo. Si no existe: `404 Not Found`.
+
+![Tabla PRODUCTO](docs/img/java/response07.png)
 
 ### Actualizar Producto
 
@@ -239,6 +253,8 @@ curl --location --request PUT 'http://localhost:8080/api/productos/1' \
 
 Respuesta esperada: `200 OK`.
 
+![Tabla PRODUCTO](docs/img/java/response08.png)
+
 ### Eliminar Producto
 
 ```bash
@@ -247,7 +263,11 @@ curl --location --request DELETE 'http://localhost:8080/api/productos/1'
 
 Respuesta esperada: `204 No Content`.
 
+![Tabla PRODUCTO](docs/img/java/response09.png)
+
 La eliminacion es logica: el producto se marca con estado `I`.
+
+![Tabla PRODUCTO](docs/img/java/response09BD.png)
 
 ## Errores
 
