@@ -128,6 +128,7 @@ class ProductoServiceImplTest {
 
         assertThat(response.getNombre()).isEqualTo("Laptop Pro");
         assertThat(response.getModelo()).isEqualTo("T14 Gen 2");
+        assertThat(response.getFechaModif()).isNotNull();
         verify(repository).save(existente);
     }
 

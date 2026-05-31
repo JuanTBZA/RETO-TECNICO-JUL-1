@@ -14,6 +14,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -80,6 +81,7 @@ public class ProductoServiceImpl implements ProductoService {
         }
 
         mapToEntity(existente, request);
+        existente.setFechaModif(LocalDateTime.now());
         return toDTO(repository.save(existente));
     }
 
