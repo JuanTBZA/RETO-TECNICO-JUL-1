@@ -94,7 +94,7 @@ Todos los procedimientos retornan `p_error_cod` y `p_error_msg` para identificar
 | Creacion de tabla | Ejecucion de `01_DDL.sql`. | Tabla `PRODUCTO` creada con constraints e indice. | ![Tabla PRODUCTO creada](docs/img/oracle/01_tabla_producto.png) |
 | Visualizacion de estructura | Consulta de la estructura. | Se observan campos de la tabla. | ![Estructura de la tabla PRODUCTO](docs/img/oracle/02_estructura_tabla.png) |
 | Creacion del package y SP | Ejecucion de `02_PKG_PRODUCTO.sql`. | Package `PKG_PRODUCTO` y sus SP creados correctamente. | ![Package y procedimientos almacenados creados](docs/img/oracle/01_package_sp.png) |
-| Insercion de data inicial | Inserts de `03_DML_TEST.sql`. | Productos `PROD-001` a `PROD-005` creados. | ![Data inicial insertada](docs/img/oracle/03_data_inicial.png) |
+| Insercion de data inicial | Inserts de `03_DML_TEST.sql`. | Productos `PROD-001` a `PROD-005` creados. | ![Data inicial insertada](docs/img/oracle/03_mi_data_inicial.png) |
 | Crear producto | `SP_CREAR_PRODUCTO` con `PROD-006`. | `p_error_cod = 0` y mensaje de creado con ID. | ![Crear producto parte 1](docs/img/oracle/04_sp_crear_producto_1.png) ![Crear producto parte 2](docs/img/oracle/04_sp_crear_producto_2.png) |
 | Actualizar producto | `SP_ACTUALIZAR_PRODUCTO` sobre ID existente. | Datos actualizados y `FECHA_MODIF` registrada. | ![Actualizar producto](docs/img/oracle/05_sp_actualizar_producto.png) |
 | Eliminar logico | `SP_ELIMINAR_LOGICO_PRODUCTO`. | `ESTADO = 'I'`, sin eliminar fisicamente el registro. | ![Eliminacion logica del producto](docs/img/oracle/06_sp_eliminar_logico.png) |
