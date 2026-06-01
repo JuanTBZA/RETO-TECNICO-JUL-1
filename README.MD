@@ -472,20 +472,20 @@ Estas pruebas son funcionales/manuales del sistema, no necesariamente pruebas un
 
 | Flujo probado | Pasos | Resultado esperado | Captura sugerida |
 |---------------|-------|--------------------|------------------|
-| Carga inicial del listado | Abrir `http://localhost:4200/productos`. | Se muestra tabla con productos activos y paginador. | `docs/img/angular/01_listado_productos.png` |
-| Spinner de carga | Recargar listado o navegar al formulario de edicion. | Se muestra indicador de carga mientras responde el backend. | `docs/img/angular/02_spinner_carga.png` |
-| Filtro por marca | Ingresar marca y presionar `Buscar`. | Tabla muestra productos filtrados por marca. | `docs/img/angular/03_filtro_marca.png` |
-| Filtro por modelo | Ingresar modelo y presionar `Buscar`. | Tabla muestra productos filtrados por modelo. | `docs/img/angular/04_filtro_modelo.png` |
-| Filtro combinado | Ingresar marca y modelo. | Tabla muestra coincidencias por ambos filtros. | `docs/img/angular/05_filtro_marca_modelo.png` |
-| Limpiar filtros | Presionar `Limpiar`. | Filtros quedan vacios y se recarga listado completo. | `docs/img/angular/06_limpiar_filtros.png` |
-| Paginacion | Cambiar pagina o tamanio de pagina. | Se consultan nuevos resultados respetando `page` y `size`. | `docs/img/angular/07_paginacion.png` |
-| Ver detalle | Presionar icono de visualizacion. | Se abre dialogo con datos del producto. | `docs/img/angular/08_detalle_producto.png` |
-| Crear producto | Entrar a `Nuevo Producto`, completar campos validos y guardar. | Se crea producto, aparece snackbar y vuelve al listado. | `docs/img/angular/09_crear_producto.png` |
-| Editar producto | Presionar editar, cambiar datos y guardar. | Se actualiza producto, aparece snackbar y vuelve al listado. | `docs/img/angular/10_editar_producto.png` |
-| Confirmar eliminacion | Presionar eliminar y confirmar. | Se elimina logicamente, aparece snackbar y se recarga tabla. | `docs/img/angular/11_eliminar_producto.png` |
-| Cancelar eliminacion | Presionar eliminar y cancelar/cerrar dialogo. | No se elimina el producto. | `docs/img/angular/12_cancelar_eliminacion.png` |
-| Sin resultados | Buscar una marca/modelo inexistente. | Tabla muestra `No se encontraron productos`. | `docs/img/angular/13_sin_resultados.png` |
-| Error del backend | Apagar backend y recargar listado. | Se muestra snackbar `Error al cargar productos`. | `docs/img/angular/14_error_backend.png` |
+| Carga inicial del listado | Abrir `http://localhost:4200/productos`. | Se muestra tabla con productos activos y paginador. | ![Listado de productos](docs/img/angular/01_listado_productos.png) |
+| Spinner de carga | Recargar listado o navegar al formulario de edicion. | Se muestra indicador de carga mientras responde el backend. | ![Spinner de carga](docs/img/angular/02_spinner_carga.png) |
+| Filtro por marca | Ingresar marca y presionar `Buscar`. | Tabla muestra productos filtrados por marca. | ![Filtro por marca](docs/img/angular/03_filtro_marca.png) |
+| Filtro por modelo | Ingresar modelo y presionar `Buscar`. | Tabla muestra productos filtrados por modelo. | ![Filtro por modelo](docs/img/angular/04_filtro_modelo.png) |
+| Filtro combinado | Ingresar marca y modelo. | Tabla muestra coincidencias por ambos filtros. | ![Filtro combinado por marca y modelo](docs/img/angular/05_filtro_marca_modelo.png) |
+| Limpiar filtros | Presionar `Limpiar`. | Filtros quedan vacios y se recarga listado completo. | ![Limpiar filtros](docs/img/angular/06_limpiar_filtros.png) |
+| Paginacion | Cambiar pagina o tamanio de pagina. | Se consultan nuevos resultados respetando `page` y `size`. | ![Paginacion del listado](docs/img/angular/07_paginacion.png) |
+| Ver detalle | Presionar icono de visualizacion. | Se abre dialogo con datos del producto. | ![Detalle del producto](docs/img/angular/08_detalle_producto.png) |
+| Crear producto | Entrar a `Nuevo Producto`, completar campos validos y guardar. | Se crea producto, aparece snackbar y vuelve al listado. | ![Crear producto](docs/img/angular/09_crear_producto.png) |
+| Editar producto | Presionar editar, cambiar datos y guardar. | Se actualiza producto, aparece snackbar y vuelve al listado. | ![Editar producto](docs/img/angular/10_editar_producto.png) |
+| Confirmar eliminacion | Presionar eliminar y confirmar. | Se elimina logicamente, aparece snackbar y se recarga tabla. | ![Eliminar producto](docs/img/angular/11_eliminar_producto.png) |
+| Cancelar eliminacion | Presionar eliminar y cancelar/cerrar dialogo. | No se elimina el producto. | ![Cancelar eliminacion](docs/img/angular/12_cancelar_eliminacion.png) |
+| Sin resultados | Buscar una marca/modelo inexistente. | Tabla muestra `No se encontraron productos`. | ![Sin resultados](docs/img/angular/13_sin_resultados.png) |
+| Error del backend | Apagar backend y recargar listado. | Se muestra snackbar `Error al cargar productos`. | ![Error del backend](docs/img/angular/14_error_backend.png) |
 
 ## Validaciones del Formulario Angular
 
@@ -498,22 +498,6 @@ Estas pruebas son funcionales/manuales del sistema, no necesariamente pruebas un
 | `precio` | Obligatorio y minimo `0`. | Mensaje `El precio es obligatorio` o `El precio no puede ser negativo`. | `docs/img/angular/19_validacion_precio.png` |
 | `stock` | Obligatorio y minimo `0`. | Mensaje `El stock es obligatorio` o `El stock no puede ser negativo`. | `docs/img/angular/20_validacion_stock.png` |
 | Codigo duplicado | Enviar un codigo ya existente. | Snackbar con mensaje retornado por backend. | `docs/img/angular/21_validacion_codigo_duplicado.png` |
-
-## Evidencia Recomendada de Capturas
-
-Para documentar el flujo completo, tomar capturas en este orden:
-
-1. Oracle: tabla creada, data inicial, package ejecutado, crear, actualizar, eliminar logico, listar y validaciones de negocio.
-2. Backend: `mvn test`, cada endpoint exitoso en Postman/cURL y errores principales `400`, `404`, `409`.
-3. Frontend: listado, filtros, paginacion, detalle, creacion, edicion, eliminacion y validaciones del formulario.
-
-Rutas recomendadas:
-
-```text
-docs/img/oracle/   -> capturas de SQL Developer, tabla, package y procedimientos.
-docs/img/java/     -> capturas de Maven, Postman/cURL y respuestas del backend.
-docs/img/angular/  -> capturas de pantallas del navegador Angular.
-```
 
 ## Notas Tecnicas
 
