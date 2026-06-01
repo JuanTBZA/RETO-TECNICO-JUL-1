@@ -41,7 +41,7 @@ La capa Oracle implementa la persistencia principal del sistema de productos. In
 | Archivo | Descripcion |
 |---------|-------------|
 | `1. ORACLE/01_DDL.sql` | Crea la tabla `PRODUCTO`, constraints e indice. |
-| `1. ORACLE/02_PKG_PRODUCTO.sql` | Crea el package `PKG_PRODUCTO` con procedimientos CRUD. |
+| `. ORACLE/02_PKG_PRODUCTO.sql` | Crea el package `PKG_PRODUCTO` con procedimientos CRUD. |
 | `1. ORACLE/03_DML_TEST.sql` | Inserta data inicial y ejecuta flujos de prueba del package. |
 
 ## Estructura de la Tabla PRODUCTO
