@@ -1,7 +1,4 @@
--- ============================================================
--- DDL: Tabla PRODUCTO + constraints + índices
--- Base de datos: Oracle 19c+
--- ============================================================
+-- DDL para la tabla PRODUCTO
 
 CREATE TABLE PRODUCTO (
     ID_PRODUCTO    NUMBER(10)        GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
