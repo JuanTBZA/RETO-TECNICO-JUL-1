@@ -107,9 +107,6 @@ Todos los procedimientos retornan `p_error_cod` y `p_error_msg` para identificar
 | Validar precio negativo | Intentar crear/actualizar con `p_precio < 0`. | `p_error_cod = -1` y mensaje de precio invalido. | ![Validacion de precio negativo](docs/img/oracle/13_validacion_precio_negativo.png) |
 | Validar stock negativo | Intentar crear/actualizar con `p_stock < 0`. | `p_error_cod = -1` y mensaje de stock invalido. | ![Validacion de stock negativo](docs/img/oracle/14_validacion_stock_negativo.png) |
 |
-Imagen ya agregada:
-
-![Tabla PRODUCTO](docs/img/oracle/tabla.png)
 
 ---
 
