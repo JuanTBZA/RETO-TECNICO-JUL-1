@@ -325,15 +325,15 @@ La eliminacion es logica: el producto se marca con estado `I`.
 
 ## Pruebas Manuales de Errores Backend
 
-| Flujo probado | Como probarlo | Resultado esperado | Captura sugerida |
+| Flujo probado | Como probarlo | Resultado esperado | Captura |
 |---------------|---------------|--------------------|------------------|
-| Body invalido | Enviar `codigo` vacio o sin campos obligatorios. | `400 Bad Request` con mensaje de validacion. | `docs/img/java/10_error_body_invalido.png` |
-| Precio negativo | Enviar `precio: -1`. | `400 Bad Request`. | `docs/img/java/11_error_precio_negativo.png` |
-| Stock negativo | Enviar `stock: -1`. | `400 Bad Request`. | `docs/img/java/12_error_stock_negativo.png` |
-| Codigo duplicado | Crear otro producto activo con el mismo `codigo`. | `409 Conflict`. | `docs/img/java/13_error_codigo_duplicado.png` |
-| Producto inexistente | Consultar `GET /api/productos/99999`. | `404 Not Found`. | `docs/img/java/14_error_producto_no_encontrado.png` |
-| Editar inexistente | Enviar `PUT /api/productos/99999`. | `404 Not Found`. | `docs/img/java/15_error_actualizar_no_encontrado.png` |
-| Eliminar inexistente | Enviar `DELETE /api/productos/99999`. | `404 Not Found`. | `docs/img/java/16_error_eliminar_no_encontrado.png` |
+| Body invalido | Enviar `codigo` vacio o sin campos obligatorios. | `400 Bad Request` con mensaje de validacion. | ![Error body invalido](docs/img/java/10_error_body_invalido.png) |
+| Precio negativo | Enviar `precio: -1`. | `400 Bad Request`. | ![Error precio negativo](docs/img/java/11_error_precio_negativo.png) |
+| Stock negativo | Enviar `stock: -1`. | `400 Bad Request`. | ![Error stock negativo](docs/img/java/12_error_stock_negativo.png) |
+| Codigo duplicado | Crear otro producto activo con el mismo `codigo`. | `409 Conflict`. | ![Error codigo duplicado](docs/img/java/13_error_codigo_duplicado.png) |
+| Producto inexistente | Consultar `GET /api/productos/99999`. | `404 Not Found`. | ![Error producto no encontrado](docs/img/java/14_error_producto_no_encontrado.png) |
+| Editar inexistente | Enviar `PUT /api/productos/99999`. | `404 Not Found`. | ![Error actualizar producto inexistente](docs/img/java/15_error_actualizar_no_encontrado.png) |
+| Eliminar inexistente | Enviar `DELETE /api/productos/99999`. | `404 Not Found`. | ![Error eliminar producto inexistente](docs/img/java/16_error_eliminar_no_encontrado.png) |
 
 Estructura general de errores:
 
