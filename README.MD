@@ -118,7 +118,7 @@ API REST construida con Java 8, Spring Boot 2.7.17, Spring Web, Spring Data JPA,
 - Java 8 o superior para compilar el proyecto configurado con target Java 8.
 - Maven.
 - Oracle Database disponible en `localhost:1521/FREEPDB1`.
-- Usuario Oracle: `MIAPP`.
+- Usuario Oracle: `RETOAPP`.
 - Password Oracle: `root123`.
 
 ## Configuracion
@@ -131,7 +131,7 @@ spring:
     name: reto
   datasource:
     url: jdbc:oracle:thin:@//localhost:1521/FREEPDB1
-    username: MIAPP
+    username: RETOAPP
     password: root123
     driver-class-name: oracle.jdbc.OracleDriver
   jpa:
@@ -352,6 +352,12 @@ Codigos principales:
 - `404 Not Found`: producto no encontrado o inactivo.
 - `409 Conflict`: codigo duplicado en un producto activo.
 - `500 Internal Server Error`: error no controlado.
+
+## Swagger UI
+
+- Se integra Swagger para documentar y probar la API REST.
+- Permite explorar todos los endpoints del backend.
+- La interfaz se accede en: http://localhost:8080/swagger-ui/index.html
 
 ---
 
