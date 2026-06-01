@@ -89,25 +89,24 @@ Todos los procedimientos retornan `p_error_cod` y `p_error_msg` para identificar
 5. Validar resultados en la tabla `PRODUCTO` y en los mensajes de `DBMS_OUTPUT`.
 
 ## Pruebas y Validaciones Oracle
-
 | Flujo probado | Como se probo | Resultado esperado | Captura sugerida |
 |---------------|---------------|--------------------|------------------|
-| Creacion de tabla | Ejecucion de `01_DDL.sql`. | Tabla `PRODUCTO` creada con constraints e indice. | `docs/img/oracle/01_tabla_producto.png` |
-| Visualizacion de estructura | Consulta de la estructura. | Se observan campos de la tabla. | `docs/img/oracle/02_estructura_tabla.png` |
-| Creacion del package y SP | Ejecucion de `02_PKG_PRODUCTO.sql`. | Package `PKG_PRODUCTO` y sus SP creados correctamente. | `docs/img/oracle/01_package_sp.png` |
-| Insercion de data inicial | Inserts de `03_DML_TEST.sql`. | Productos `PROD-001` a `PROD-005` creados. | `docs/img/oracle/03_data_inicial.png` |
-| Crear producto | `SP_CREAR_PRODUCTO` con `PROD-006`. | `p_error_cod = 0` y mensaje de creado con ID. | `docs/img/oracle/04_sp_crear_producto_1.png` `docs/img/oracle/04_sp_crear_producto_2.png` |
-| Actualizar producto | `SP_ACTUALIZAR_PRODUCTO` sobre ID existente. | Datos actualizados y `FECHA_MODIF` registrada. | `docs/img/oracle/05_sp_actualizar_producto.png` |
-| Eliminar logico | `SP_ELIMINAR_LOGICO_PRODUCTO`. | `ESTADO = 'I'`, sin eliminar fisicamente el registro. | `docs/img/oracle/06_sp_eliminar_logico.png` |
-| Obtener por ID | `SP_OBTENER_PRODUCTO_ID`. | Retorna solo producto activo encontrado. | `docs/img/oracle/07_sp_obtener_por_id.png` |
-| Listar sin filtros | `SP_LISTAR_PRODUCTOS(NULL, NULL, ...)`. | Lista productos activos. | `docs/img/oracle/08_sp_listar_todos.png` |
-| Filtrar por marca | `SP_LISTAR_PRODUCTOS('Dell', NULL, ...)`. | Retorna coincidencias por marca. | `docs/img/oracle/09_sp_filtrar_marca.png` |
-| Filtrar por modelo | `SP_LISTAR_PRODUCTOS(NULL, 'WH', ...)`. | Retorna coincidencias por modelo. | `docs/img/oracle/10_sp_filtrar_modelo.png` |
-| Filtrar por marca y modelo | `SP_LISTAR_PRODUCTOS('Logitech', 'MX', ...)`. | Retorna coincidencias combinadas. | `docs/img/oracle/11_sp_filtrar_marca_modelo.png` |
-| Validar codigo duplicado | Intentar crear/actualizar con codigo activo existente. | `p_error_cod = -1` y mensaje de codigo en uso. | `docs/img/oracle/12_validacion_codigo_duplicado.png` |
-| Validar precio negativo | Intentar crear/actualizar con `p_precio < 0`. | `p_error_cod = -1` y mensaje de precio invalido. | `docs/img/oracle/13_validacion_precio_negativo.png` |
-| Validar stock negativo | Intentar crear/actualizar con `p_stock < 0`. | `p_error_cod = -1` y mensaje de stock invalido. | `docs/img/oracle/14_validacion_stock_negativo.png` |
-
+| Creacion de tabla | Ejecucion de `01_DDL.sql`. | Tabla `PRODUCTO` creada con constraints e indice. | ![Tabla PRODUCTO creada](docs/img/oracle/01_tabla_producto.png) |
+| Visualizacion de estructura | Consulta de la estructura. | Se observan campos de la tabla. | ![Estructura de la tabla PRODUCTO](docs/img/oracle/02_estructura_tabla.png) |
+| Creacion del package y SP | Ejecucion de `02_PKG_PRODUCTO.sql`. | Package `PKG_PRODUCTO` y sus SP creados correctamente. | ![Package y procedimientos almacenados creados](docs/img/oracle/01_package_sp.png) |
+| Insercion de data inicial | Inserts de `03_DML_TEST.sql`. | Productos `PROD-001` a `PROD-005` creados. | ![Data inicial insertada](docs/img/oracle/03_data_inicial.png) |
+| Crear producto | `SP_CREAR_PRODUCTO` con `PROD-006`. | `p_error_cod = 0` y mensaje de creado con ID. | ![Crear producto parte 1](docs/img/oracle/04_sp_crear_producto_1.png) ![Crear producto parte 2](docs/img/oracle/04_sp_crear_producto_2.png) |
+| Actualizar producto | `SP_ACTUALIZAR_PRODUCTO` sobre ID existente. | Datos actualizados y `FECHA_MODIF` registrada. | ![Actualizar producto](docs/img/oracle/05_sp_actualizar_producto.png) |
+| Eliminar logico | `SP_ELIMINAR_LOGICO_PRODUCTO`. | `ESTADO = 'I'`, sin eliminar fisicamente el registro. | ![Eliminacion logica del producto](docs/img/oracle/06_sp_eliminar_logico.png) |
+| Obtener por ID | `SP_OBTENER_PRODUCTO_ID`. | Retorna solo producto activo encontrado. | ![Obtener producto por ID](docs/img/oracle/07_sp_obtener_por_id.png) |
+| Listar sin filtros | `SP_LISTAR_PRODUCTOS(NULL, NULL, ...)`. | Lista productos activos. | ![Listar todos los productos activos](docs/img/oracle/08_sp_listar_todos.png) |
+| Filtrar por marca | `SP_LISTAR_PRODUCTOS('Dell', NULL, ...)`. | Retorna coincidencias por marca. | ![Filtrar productos por marca](docs/img/oracle/09_sp_filtrar_marca.png) |
+| Filtrar por modelo | `SP_LISTAR_PRODUCTOS(NULL, 'WH', ...)`. | Retorna coincidencias por modelo. | ![Filtrar productos por modelo](docs/img/oracle/10_sp_filtrar_modelo.png) |
+| Filtrar por marca y modelo | `SP_LISTAR_PRODUCTOS('Logitech', 'MX', ...)`. | Retorna coincidencias combinadas. | ![Filtrar productos por marca y modelo](docs/img/oracle/11_sp_filtrar_marca_modelo.png) |
+| Validar codigo duplicado | Intentar crear/actualizar con codigo activo existente. | `p_error_cod = -1` y mensaje de codigo en uso. | ![Validacion de codigo duplicado](docs/img/oracle/12_validacion_codigo_duplicado.png) |
+| Validar precio negativo | Intentar crear/actualizar con `p_precio < 0`. | `p_error_cod = -1` y mensaje de precio invalido. | ![Validacion de precio negativo](docs/img/oracle/13_validacion_precio_negativo.png) |
+| Validar stock negativo | Intentar crear/actualizar con `p_stock < 0`. | `p_error_cod = -1` y mensaje de stock invalido. | ![Validacion de stock negativo](docs/img/oracle/14_validacion_stock_negativo.png) |
+|
 Imagen ya agregada:
 
 ![Tabla PRODUCTO](docs/img/oracle/tabla.png)
