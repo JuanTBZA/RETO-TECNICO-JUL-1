@@ -5,6 +5,7 @@ import com.juan.tirado.reto.dto.ProductoRequestDTO;
 import com.juan.tirado.reto.dto.ProductoResponseDTO;
 import com.juan.tirado.reto.exception.CodigoConflictException;
 import com.juan.tirado.reto.exception.ProductoNotFoundException;
+import com.juan.tirado.reto.mapper.ProductoMapper;
 import com.juan.tirado.reto.model.Producto;
 import com.juan.tirado.reto.repository.ProductoRepository;
 import com.juan.tirado.reto.service.ProductoService;
@@ -25,6 +26,7 @@ public class ProductoServiceImpl implements ProductoService {
     private static final String ESTADO_ACTIVO = "A";
 
     private final ProductoRepository repository;
+    private final ProductoMapper mapper;
 
     // ── CREAR ─────────────────────────────────────────────────────────────────
     @Override
@@ -32,15 +34,15 @@ public class ProductoServiceImpl implements ProductoService {
     public ProductoResponseDTO crear(ProductoRequestDTO request) {
         validarCodigoUnicoNuevo(request.getCodigo());
 
-        Producto producto = mapToEntity(new Producto(), request);
-        return toDTO(repository.save(producto));
+        Producto producto = mapper.toEntity(request);
+        return mapper.toDTO(repository.save(producto));
     }
 
     // ── OBTENER POR ID ────────────────────────────────────────────────────────
     @Override
     @Transactional(readOnly = true)
     public ProductoResponseDTO obtenerPorId(Long id) {
-        return toDTO(findActiveOrThrow(id));
+        return mapper.toDTO(findActiveOrThrow(id));
     }
 
     // ── LISTAR CON FILTRO + PAGINACIÓN ────────────────────────────────────────
@@ -57,7 +59,7 @@ public class ProductoServiceImpl implements ProductoService {
 
         List<ProductoResponseDTO> content = pageResult.getContent()
                 .stream()
-                .map(this::toDTO)
+                .map(mapper::toDTO)
                 .collect(Collectors.toList());
 
         return new PagedResponseDTO<>(
@@ -80,9 +82,9 @@ public class ProductoServiceImpl implements ProductoService {
             validarCodigoUnicoNuevo(request.getCodigo());
         }
 
-        mapToEntity(existente, request);
+        mapper.updateEntity(existente, request);
         existente.setFechaModif(LocalDateTime.now());
-        return toDTO(repository.save(existente));
+        return mapper.toDTO(repository.save(existente));
     }
 
     // ── ELIMINAR LÓGICO ───────────────────────────────────────────────────────
@@ -105,30 +107,5 @@ public class ProductoServiceImpl implements ProductoService {
         if (repository.existsByCodigoAndEstado(codigo, ESTADO_ACTIVO)) {
             throw new CodigoConflictException(codigo);
         }
-    }
-
-    private Producto mapToEntity(Producto p, ProductoRequestDTO dto) {
-        p.setCodigo(dto.getCodigo().trim().toUpperCase());
-        p.setNombre(dto.getNombre().trim());
-        p.setMarca(dto.getMarca().trim());
-        p.setModelo(dto.getModelo().trim());
-        p.setPrecio(dto.getPrecio());
-        p.setStock(dto.getStock());
-        return p;
-    }
-
-    private ProductoResponseDTO toDTO(Producto p) {
-        return ProductoResponseDTO.builder()
-                .idProducto(p.getIdProducto())
-                .codigo(p.getCodigo())
-                .nombre(p.getNombre())
-                .marca(p.getMarca())
-                .modelo(p.getModelo())
-                .precio(p.getPrecio())
-                .stock(p.getStock())
-                .estado(p.getEstado())
-                .fechaCreacion(p.getFechaCreacion())
-                .fechaModif(p.getFechaModif())
-                .build();
     }
 }

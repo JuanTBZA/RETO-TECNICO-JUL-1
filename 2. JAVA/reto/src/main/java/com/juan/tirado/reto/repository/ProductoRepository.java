@@ -16,9 +16,6 @@ public interface ProductoRepository extends JpaRepository<Producto, Long> {
     // Buscar activo por ID
     Optional<Producto> findByIdProductoAndEstado(Long id, String estado);
 
-    // Verificar código único (excluyendo un ID)
-    boolean existsByCodigoAndEstadoAndIdProductoNot(String codigo, String estado, Long id);
-
     // Verificar código único (sin excluir)
     boolean existsByCodigoAndEstado(String codigo, String estado);
 

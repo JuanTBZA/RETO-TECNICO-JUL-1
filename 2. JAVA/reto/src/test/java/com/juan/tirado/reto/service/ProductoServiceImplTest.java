@@ -5,6 +5,7 @@ import com.juan.tirado.reto.dto.ProductoRequestDTO;
 import com.juan.tirado.reto.dto.ProductoResponseDTO;
 import com.juan.tirado.reto.exception.CodigoConflictException;
 import com.juan.tirado.reto.exception.ProductoNotFoundException;
+import com.juan.tirado.reto.mapper.ProductoMapper;
 import com.juan.tirado.reto.model.Producto;
 import com.juan.tirado.reto.repository.ProductoRepository;
 import com.juan.tirado.reto.service.impl.ProductoServiceImpl;
@@ -38,7 +39,7 @@ class ProductoServiceImplTest {
 
     @BeforeEach
     void setUp() {
-        service = new ProductoServiceImpl(repository);
+        service = new ProductoServiceImpl(repository, new ProductoMapper());
     }
 
     @Test
