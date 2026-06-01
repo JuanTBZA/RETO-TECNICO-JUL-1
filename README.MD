@@ -491,14 +491,13 @@ Estas pruebas son funcionales/manuales del sistema, no necesariamente pruebas un
 
 | Campo | Validacion en frontend | Resultado esperado | Captura sugerida |
 |-------|------------------------|--------------------|------------------|
-| `codigo` | Obligatorio y maximo 20 caracteres. | Mensaje `El codigo es obligatorio` o `Maximo 20 caracteres`. | `docs/img/angular/15_validacion_codigo.png` |
-| `nombre` | Obligatorio y maximo 120 caracteres. | Mensaje de obligatoriedad o longitud maxima. | `docs/img/angular/16_validacion_nombre.png` |
-| `marca` | Obligatoria y maximo 60 caracteres. | Mensaje `La marca es obligatoria`. | `docs/img/angular/17_validacion_marca.png` |
-| `modelo` | Obligatorio y maximo 60 caracteres. | Mensaje `El modelo es obligatorio`. | `docs/img/angular/18_validacion_modelo.png` |
-| `precio` | Obligatorio y minimo `0`. | Mensaje `El precio es obligatorio` o `El precio no puede ser negativo`. | `docs/img/angular/19_validacion_precio.png` |
-| `stock` | Obligatorio y minimo `0`. | Mensaje `El stock es obligatorio` o `El stock no puede ser negativo`. | `docs/img/angular/20_validacion_stock.png` |
-| Codigo duplicado | Enviar un codigo ya existente. | Snackbar con mensaje retornado por backend. | `docs/img/angular/21_validacion_codigo_duplicado.png` |
-
+| `codigo` | Obligatorio y maximo 20 caracteres. | Mensaje `El codigo es obligatorio` o `Maximo 20 caracteres`. | ![Validacion codigo](docs/img/angular/15_validacion_codigo.png) |
+| `nombre` | Obligatorio y maximo 120 caracteres. | Mensaje de obligatoriedad o longitud maxima. | ![Validacion nombre](docs/img/angular/16_validacion_nombre.png) |
+| `marca` | Obligatoria y maximo 60 caracteres. | Mensaje `La marca es obligatoria`. | ![Validacion marca](docs/img/angular/17_validacion_marca.png) |
+| `modelo` | Obligatorio y maximo 60 caracteres. | Mensaje `El modelo es obligatorio`. | ![Validacion modelo](docs/img/angular/18_validacion_modelo.png) |
+| `precio` | Obligatorio y minimo `0`. | Mensaje `El precio es obligatorio` o `El precio no puede ser negativo`. | ![Validacion precio](docs/img/angular/19_validacion_precio.png) |
+| `stock` | Obligatorio y minimo `0`. | Mensaje `El stock es obligatorio` o `El stock no puede ser negativo`. | ![Validacion stock](docs/img/angular/20_validacion_stock.png) |
+| Codigo duplicado | Enviar un codigo ya existente. | Snackbar con mensaje retornado por backend. | ![Validacion codigo duplicado](docs/img/angular/21_validacion_codigo_duplicado.png) |
 ## Notas Tecnicas
 
 - El frontend usa componentes standalone.
