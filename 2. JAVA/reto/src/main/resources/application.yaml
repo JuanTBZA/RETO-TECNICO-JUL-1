@@ -3,7 +3,7 @@ spring:
     name: reto
   datasource:
     url: jdbc:oracle:thin:@//localhost:1521/FREEPDB1
-    username: MIAPP
+    username: RETOAPP
     password: root123
     driver-class-name: oracle.jdbc.OracleDriver
   jpa:
