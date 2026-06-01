@@ -164,11 +164,10 @@ Desde `2. JAVA/reto/`:
 mvn test
 ```
 
-Captura actual:
+resultado de los tests:
 
-![Ejecucion de pruebas Java](docs/img/java/tests.png)
+![Ejecucion de pruebas Java](docs/img/java/00_mvn_test.png)
 
-Ruta sugerida si se actualiza la captura: `docs/img/java/00_mvn_test.png`.
 
 ## Validaciones Backend
 
