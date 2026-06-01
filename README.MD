@@ -89,7 +89,7 @@ Todos los procedimientos retornan `p_error_cod` y `p_error_msg` para identificar
 5. Validar resultados en la tabla `PRODUCTO` y en los mensajes de `DBMS_OUTPUT`.
 
 ## Pruebas y Validaciones Oracle
-| Flujo probado | Como se probo | Resultado esperado | Captura sugerida |
+| Flujo probado | Como se probo | Resultado esperado | Captura |
 |---------------|---------------|--------------------|------------------|
 | Creacion de tabla | Ejecucion de `01_DDL.sql`. | Tabla `PRODUCTO` creada con constraints e indice. | ![Tabla PRODUCTO creada](docs/img/oracle/01_tabla_producto.png) |
 | Visualizacion de estructura | Consulta de la estructura. | Se observan campos de la tabla. | ![Estructura de la tabla PRODUCTO](docs/img/oracle/02_estructura_tabla.png) |
